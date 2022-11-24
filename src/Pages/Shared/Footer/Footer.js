@@ -4,7 +4,7 @@ import { BsGithub, BsFacebook, BsInstagram } from "react-icons/bs";
 
 const Footer = () => {
     return (
-        <footer className="footer footer-center pt-9 bg-primary text-primary-content">
+        <footer className="footer footer-center pt-9 bg-primary text-primary-content rounded-t-xl">
             <div>
                 <img className="h-32 w-32" src={logoDr} alt="" />
                 <p className="font-bold text-lg">
