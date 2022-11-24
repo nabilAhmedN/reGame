@@ -1,10 +1,31 @@
-import React from 'react';
+import React from "react";
+import logoDr from "../../../assets/images/logo.png";
+import { BsGithub, BsFacebook, BsInstagram } from "react-icons/bs";
 
 const Footer = () => {
     return (
-        <div>
-            <h2>this is footer</h2>
-        </div>
+        <footer className="footer footer-center pt-9 bg-primary text-primary-content">
+            <div>
+                <img className="h-32 w-32" src={logoDr} alt="" />
+                <p className="font-bold text-lg">
+                    Buy-Sell-Exchange Playstation/Xbox/PC Games
+                </p>
+                <p>Copyright © 2022 - All right reserved</p>
+            </div>
+            <div>
+                <div className="grid grid-flow-col gap-4">
+                    <a className="h-24" href="https://github.com/nabilAhmedN">
+                        <BsGithub className="text-2xl" />
+                    </a>
+                    <a href="https://web.facebook.com/nabilAhmedNahid2">
+                        <BsFacebook className="text-2xl" />
+                    </a>
+                    <a href="https://www.instagram.com/nabil_astro_b/">
+                        <BsInstagram className="text-2xl" />
+                    </a>
+                </div>
+            </div>
+        </footer>
     );
 };
 
