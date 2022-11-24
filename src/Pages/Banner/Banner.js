@@ -14,7 +14,7 @@ const Banner = () => {
             <div className="hero-content text-center text-neutral-content">
                 <div className="">
                     <h1 className="mb-5 text-5xl font-bold text-white">
-                        Shutter Up
+                        ReGame
                     </h1>
                     <p className="mb-5 font-medium text-gray-200">
                         Shutter Up offers a variety of inexpensive bundles with

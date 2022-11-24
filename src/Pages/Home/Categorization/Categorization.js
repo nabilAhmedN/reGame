@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import AllCategorization from "./AllCategorization";
 
 const Categorization = () => {
     const [categories, setCategories] = useState([]);
@@ -10,8 +11,15 @@ const Categorization = () => {
     },[])
 
     return (
-        <div>
-            <h2>total Categorization {categories.length}</h2>
+        <div className="mt-6">
+            <h2 className=" text-center font-bold text-2xl">
+                Category of <span className="text-fuchsia-600">Platform</span>
+            </h2>
+            <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-6">
+                {categories.map((category) => (
+                    <AllCategorization key={category._id} category={category} />
+                ))}
+            </div>
         </div>
     );
 };
