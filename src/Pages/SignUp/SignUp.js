@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 // import Signimg from "../../assets/images/Signimg.png";
 import { AuthContext } from "../../contexts/AuthProvider";
@@ -21,7 +22,7 @@ const SignUp = () => {
     //             console.log(user);
     //             form.reset();
     //             setError("");
-    //             handleupdateUserProfile(name); 
+    //             handleupdateUserProfile(name);
     //         })
     //         .catch((err) => {
     //             console.error(err)
@@ -68,6 +69,28 @@ const SignUp = () => {
             .catch((error) => {
                 console.log(error);
                 setSignUpError(error.message);
+            });
+        const name = data.name;
+        const email = data.email;
+        const role = data.userType;
+        const signupUser = {
+            name,
+            email,
+            role,
+        };
+        fetch("http://localhost:5000/signup", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(signupUser),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                if (data.acknowledged) {
+                    toast.success("Signup Successfully");
+                }
             });
     };
 
@@ -238,6 +261,5 @@ const SignUp = () => {
         </div>
     );
 };
-
 
 export default SignUp;

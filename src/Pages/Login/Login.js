@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 const Login = () => {
     // const { login, googleProviderLogin} = useContext(AuthContext);
@@ -73,6 +74,27 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 navigate(from, { replace: true });
+
+                const name = user.displayName
+                const email = user.email
+                const role = 'Buyer'
+                const loginUser = {
+                    name, email, role,
+                }
+
+                fetch("http://localhost:5000/login",{
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(loginUser),
+                })
+                .then((res) => res.json())
+                .then((data) => {
+                    if(data.modifiedCount >0){
+                        toast.success("User Login Successfully")
+                    }
+                })
             })
             .catch((error) => console.log(error));
     };
@@ -187,7 +209,7 @@ const Login = () => {
                         )}
                     </div>
 
-                    <div className="form-control w-full max-w-xs mt-3 bordered">
+                    {/* <div className="form-control w-full max-w-xs mt-3 bordered">
                         <select
                             className="bordered"
                             {...register("userType", {
@@ -203,7 +225,7 @@ const Login = () => {
                                 {errors.userType?.message}
                             </p>
                         )}
-                    </div>
+                    </div> */}
                     <input
                         className="btn btn-primary w-full mt-5"
                         value="Login"

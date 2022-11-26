@@ -9,6 +9,7 @@ const BookModal = ({ gameName, setGameName }) => {
         
         game_name,
         resale_price,
+        img
     } = gameName;
 
     const handleBooking = (event) => {
