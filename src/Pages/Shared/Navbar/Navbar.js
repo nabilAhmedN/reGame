@@ -23,10 +23,6 @@ const Navbar = () => {
                 <Link to="/blog">Blog</Link>
             </li>
 
-            {/* <li className="font-semibold">
-                <Link to="/login">Login</Link>
-            </li> */}
-
             {user?.email ? (
                 <>
                     {/* <li className="font-semibold">
@@ -88,9 +84,9 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal p-0">{menuItems}</ul>
             </div>
             <div className="navbar-end">
-                {/* <span className="pr-4 text-fuchsia-500">
+                <span className="pr-4 text-fuchsia-500">
                     {user?.displayName}
-                </span> */}
+                </span>
             </div>
         </div>
     );

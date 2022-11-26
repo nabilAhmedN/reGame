@@ -10,9 +10,11 @@ const AllCategorization = ({category}) => {
                     <img src={img} alt="" className="rounded-xl" />
                 </figure>
                 <div className="card-body items-center ">
-                    <Link to={`/category/${_id}`}>
+                    {<Link to={`/category/${_id}`}>
                         <h2 className="card-title">{title}</h2>
                     </Link>
+                    
+                    }
                     {/* <div className="card-actions">
                         <button className="btn btn-primary">Buy Now</button>
                     </div> */}

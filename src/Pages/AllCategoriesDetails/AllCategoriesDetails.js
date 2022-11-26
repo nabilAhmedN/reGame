@@ -1,7 +1,7 @@
 import React from "react";
 import { GoVerified } from "react-icons/go";
 
-const AllCategoriesDetails = ({ catego }) => {
+const AllCategoriesDetails = ({ catego, setGameName }) => {
     const {
         img,
         game_name,
@@ -40,7 +40,13 @@ const AllCategoriesDetails = ({ catego }) => {
                 <p>Post On: {registered.slice(0, 10)}</p>
                 <p>Saler: {seler_name}</p>
                 <div className="card-actions">
-                    <button className="btn btn-primary">Book Now</button>
+                    <label
+                        htmlFor="booking-game"
+                        onClick={() => setGameName(catego)}
+                    >
+                        Book Now
+                    </label>
+                    {/* <button className="btn btn-primary">Book Now</button> */}
                 </div>
             </div>
         </div>
