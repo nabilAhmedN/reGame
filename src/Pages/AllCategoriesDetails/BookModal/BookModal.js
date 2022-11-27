@@ -6,25 +6,26 @@ const BookModal = ({ gameName, setGameName }) => {
     const { user } = useContext(AuthContext);
 
     const {
-        
+        img,
         game_name,
         resale_price,
-        img
     } = gameName;
 
     const handleBooking = (event) => {
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
-        const game_name = form.model.value;
+        const game_name = form.game_name.value;
+        const img = form.img.value;
         const price = form.price.value;
         const phone = form.phone.value;
         const location = form.location.value;
-        // console.log(email, model);
+        
         const booking = {
             name,
             email,
             game_name,
+            img,
             price,
             phone,
             location,
@@ -77,9 +78,16 @@ const BookModal = ({ gameName, setGameName }) => {
                             readOnly
                         />
                         <input
-                            name="model"
+                            name="game_name"
                             type="text"
                             value={game_name}
+                            className="input w-full input-bordered"
+                            readOnly
+                        />
+                        <input
+                            name="img"
+                            type="text"
+                            value={img}
                             className="input w-full input-bordered"
                             readOnly
                         />
