@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 // import Signimg from "../../assets/images/Signimg.png";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useToken from "../../hooks/useToken";
 
 const SignUp = () => {
     // const [error, setError] = useState("");
@@ -49,7 +50,12 @@ const SignUp = () => {
     } = useForm();
     const { createUser, updateUser } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState("");
+    const [createdUserEmail, setCreatedUserEmail] = useState("");
+    const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
+    if(token){
+        navigate('/')
+    }
 
     const handleSignUp = (data) => {
         setSignUpError("");
@@ -62,7 +68,7 @@ const SignUp = () => {
                 };
                 updateUser(userInfo)
                     .then(() => {
-                        navigate("/");
+                        // navigate("/");
                     })
                     .catch((err) => console.log(err));
             })
@@ -89,6 +95,7 @@ const SignUp = () => {
             .then((data) => {
                 console.log(data);
                 if (data.acknowledged) {
+                    setCreatedUserEmail(email)
                     toast.success("Signup Successfully");
                 }
             });

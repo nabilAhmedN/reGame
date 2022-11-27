@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const GameBooked = () => {
@@ -10,7 +11,11 @@ const GameBooked = () => {
     const { data: bookingsgame = []} = useQuery({
         queryKey: ["bookingsgame", user?.email],
         queryFn: async () => {
-            const res = await fetch(url);
+            const res = await fetch(url, {
+                headers:{
+                    authorization:`bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             const data = await res.json();
             return data;
         },
@@ -43,7 +48,22 @@ const GameBooked = () => {
                                 </td>
                                 <td>{game.game_name}</td>
                                 <td>{game.price}</td>
-                                <td>Blue</td>
+                                <td>
+                                    {game.price && !game.paid && (
+                                        <Link
+                                            to={`/dashboard/payment/${game._id}`}
+                                        >
+                                            <button className="btn btn-primary btn-sm">
+                                                Pay
+                                            </button>
+                                        </Link>
+                                    )}
+                                    {game.price && game.paid && (
+                                        <span className="text-green-500">
+                                            Paid
+                                        </span>
+                                    )}
+                                </td>
                             </tr>
                         ))}
                     </tbody>

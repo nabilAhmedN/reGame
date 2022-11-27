@@ -134,13 +134,21 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link to="/" className="btn btn-ghost normal-case text-xl">
-                    <img src={logo} className="h-12 mr-3 rounded-3xl" alt="" />
-                    <h1>Phone Resale</h1>
+                <Link
+                    to="/"
+                    className="btn btn-ghost h-24 w-24 normal-case text-xl"
+                >
+                    <img src={logo} className="" alt="" />
+                    {/* <h1>ReGame</h1> */}
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">{menuItems}</ul>
+            </div>
+            <div className="navbar-end">
+                <span className="pr-4 text-fuchsia-500">
+                    {user?.displayName}
+                </span>
             </div>
             <label
                 htmlFor="drawer-deshboard"
@@ -162,6 +170,11 @@ const Navbar = () => {
                     />
                 </svg>
             </label>
+            {/* <div className="navbar-end">
+                <span className="pr-4 text-fuchsia-500">
+                    {user?.displayName}
+                </span>
+            </div> */}
         </div>
     );
 };

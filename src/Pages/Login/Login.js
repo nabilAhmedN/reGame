@@ -6,6 +6,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
     // const { login, googleProviderLogin} = useContext(AuthContext);
@@ -48,11 +49,17 @@ const Login = () => {
     } = useForm();
     const { signIn, googleLogin } = useContext(AuthContext);
     const [loginError, setLoginError] = useState("");
+    const [loginUserEmail, setLoginUserEmail] = useState("");
+    const [token] = useToken(loginUserEmail);
     const googleProvider = new GoogleAuthProvider();
     const location = useLocation();
     const navigate = useNavigate();
 
     const from = location.state?.from?.pathname || "/";
+
+    if (token) {
+        navigate(from, { replace: true });
+    }
 
     const handleLogin = (data) => {
         console.log(data);
@@ -61,7 +68,7 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user);
-                navigate(from, { replace: true });
+                setLoginUserEmail(data.email);
             })
             .catch((error) => {
                 console.log(error);
@@ -75,26 +82,28 @@ const Login = () => {
                 console.log(user);
                 navigate(from, { replace: true });
 
-                const name = user.displayName
-                const email = user.email
-                const role = 'Buyer'
+                const name = user.displayName;
+                const email = user.email;
+                const role = "Buyer";
                 const loginUser = {
-                    name, email, role,
-                }
+                    name,
+                    email,
+                    role,
+                };
 
-                fetch("http://localhost:5000/login",{
+                fetch("http://localhost:5000/login", {
                     method: "PUT",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
                     },
                     body: JSON.stringify(loginUser),
                 })
-                .then((res) => res.json())
-                .then((data) => {
-                    if(data.modifiedCount >0){
-                        toast.success("User Login Successfully")
-                    }
-                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        if (data.modifiedCount > 0) {
+                            toast.success("User Login Successfully");
+                        }
+                    });
             })
             .catch((error) => console.log(error));
     };

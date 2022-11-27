@@ -4,6 +4,7 @@ import Main from "../../Layout/Main";
 import Blog from "../../Pages/Blog/Blog";
 import CategoriesDetails from "../../Pages/CategoriesDetails/CategoriesDetails";
 import GameBooked from "../../Pages/Dashboard/GameBooked/GameBooked";
+import Payment from "../../Pages/Dashboard/Payment/Payment";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
@@ -49,6 +50,13 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard",
                 element: <GameBooked />,
+            },
+            {
+                // TODO: payment
+                path: "/dashboard/payment/:id",
+                element: <Payment />,
+                loader: ({ params }) =>
+                    fetch(`http://localhost:5000/bookings/${params.id}`),
             },
         ],
     },
