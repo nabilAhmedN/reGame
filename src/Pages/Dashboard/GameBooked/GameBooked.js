@@ -1,20 +1,21 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../../../contexts/AuthProvider';
+import { useQuery } from "@tanstack/react-query";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 const GameBooked = () => {
-
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext);
     const url = `http://localhost:5000/bookingsgame?email=${user?.email}`;
 
-    const { data: bookingsgame = []} = useQuery({
+    const { data: bookingsgame = [] } = useQuery({
         queryKey: ["bookingsgame", user?.email],
         queryFn: async () => {
             const res = await fetch(url, {
-                headers:{
-                    authorization:`bearer ${localStorage.getItem('accessToken')}`
-                }
+                headers: {
+                    authorization: `bearer ${localStorage.getItem(
+                        "accessToken"
+                    )}`,
+                },
             });
             const data = await res.json();
             return data;
@@ -36,36 +37,40 @@ const GameBooked = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {bookingsgame.map((game, index) => (
-                            <tr key={game._id}>
-                                <td>{index + 1}</td>
-                                <td>
-                                    <div className="avatar">
-                                        <div className="w-24 rounded-full">
-                                            <img src={game.img} alt="game" />
+                        {bookingsgame?.length &&
+                            bookingsgame?.map((game, index) => (
+                                <tr key={game._id}>
+                                    <td>{index + 1}</td>
+                                    <td>
+                                        <div className="avatar">
+                                            <div className="w-24 rounded-full">
+                                                <img
+                                                    src={game.img}
+                                                    alt="game"
+                                                />
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>{game.game_name}</td>
-                                <td>{game.price}</td>
-                                <td>
-                                    {game.price && !game.paid && (
-                                        <Link
-                                            to={`/dashboard/payment/${game._id}`}
-                                        >
-                                            <button className="btn btn-primary btn-sm">
-                                                Pay
-                                            </button>
-                                        </Link>
-                                    )}
-                                    {game.price && game.paid && (
-                                        <span className="text-green-500">
-                                            Paid
-                                        </span>
-                                    )}
-                                </td>
-                            </tr>
-                        ))}
+                                    </td>
+                                    <td>{game.game_name}</td>
+                                    <td>{game.price}</td>
+                                    <td>
+                                        {game.price && !game.paid && (
+                                            <Link
+                                                to={`/dashboard/payment/${game._id}`}
+                                            >
+                                                <button className="btn btn-primary btn-sm">
+                                                    Pay
+                                                </button>
+                                            </Link>
+                                        )}
+                                        {game.price && game.paid && (
+                                            <span className="text-green-500">
+                                                Paid
+                                            </span>
+                                        )}
+                                    </td>
+                                </tr>
+                            ))}
                     </tbody>
                 </table>
             </div>

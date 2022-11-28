@@ -3,12 +3,18 @@ import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import Blog from "../../Pages/Blog/Blog";
 import CategoriesDetails from "../../Pages/CategoriesDetails/CategoriesDetails";
+import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
+import AllBuyer from "../../Pages/Dashboard/AllBuyer/AllBuyer";
+import AllSeller from "../../Pages/Dashboard/AllSeller/AllSeller";
+import AllUser from "../../Pages/Dashboard/AllUser/AllUser";
 import GameBooked from "../../Pages/Dashboard/GameBooked/GameBooked";
+import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import Payment from "../../Pages/Dashboard/Payment/Payment";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
+import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
@@ -42,6 +48,9 @@ const router = createBrowserRouter([
     {
         path: "/dashboard",
         element: (
+            // <AdminRoute>
+            //     <DashboardLayout />
+            // </AdminRoute>
             <PrivateRoute>
                 <DashboardLayout />
             </PrivateRoute>
@@ -50,6 +59,31 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard",
                 element: <GameBooked />,
+            },
+            {
+                path: "/dashboard/allseller",
+                element: <AllSeller />,
+            },
+            {
+                path: "/dashboard/allbuyer",
+                element: <AllBuyer />,
+            },
+            {
+                path: "/dashboard/myorders",
+                element: <MyOrders />,
+            },
+            {
+                path: "/dashboard/addproduct",
+                element: <AddProduct />,
+            },
+            {
+                path: "/dashboard/alluser",
+                element: (
+                    <AdminRoute>
+                        
+                        <AllUser />
+                    </AdminRoute>
+                ),
             },
             {
                 // TODO: payment

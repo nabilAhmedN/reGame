@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import AllCategorization from "./AllCategorization";
+import axios from "axios";
 
 const Categorization = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() =>{
-        fetch("http://localhost:5000/categories")
-            .then((res) => res.json())
-            .then((data) => setCategories(data));
+        // fetch("http://localhost:5000/categories")
+        //     .then((res) => res.json())
+        //     .then((data) => setCategories(data));
+        axios
+            .get("http://localhost:5000/categories")
+            .then((data) => setCategories(data.data));
     },[])
 
     return (
