@@ -80,9 +80,10 @@ const router = createBrowserRouter([
                 path: "/dashboard/alluser",
                 element: (
                     <AdminRoute>
-                        
+
                         <AllUser />
                     </AdminRoute>
+                    // <AllUser />
                 ),
             },
             {

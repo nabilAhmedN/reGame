@@ -247,7 +247,7 @@ const Login = () => {
                     </div>
                 </form>
                 <p>
-                    New to Phone Resale?{" "}
+                    New to reGame?{" "}
                     <Link className="text-green-400" to="/signup">
                         Create an Account
                     </Link>
