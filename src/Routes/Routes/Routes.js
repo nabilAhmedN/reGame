@@ -9,6 +9,7 @@ import AllSeller from "../../Pages/Dashboard/AllSeller/AllSeller";
 import AllUser from "../../Pages/Dashboard/AllUser/AllUser";
 import GameBooked from "../../Pages/Dashboard/GameBooked/GameBooked";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
+import MyProduct from "../../Pages/Dashboard/MyProduct/MyProduct";
 import Payment from "../../Pages/Dashboard/Payment/Payment";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home/Home";
@@ -16,6 +17,7 @@ import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import SellerRoute from "../SellerRoute/SellerRoute";
 
 const router = createBrowserRouter([
     {
@@ -47,10 +49,8 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
+        // errorElement: <ErrorPage />,
         element: (
-            // <AdminRoute>
-            //     <DashboardLayout />
-            // </AdminRoute>
             <PrivateRoute>
                 <DashboardLayout />
             </PrivateRoute>
@@ -74,18 +74,29 @@ const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/addproduct",
-                element: <AddProduct />,
+                element: (
+                    <SellerRoute>
+                        <AddProduct />
+                    </SellerRoute>
+                ),
+            },
+            {
+                path: "/dashboard/myproduct",
+                element: (
+                    <SellerRoute>
+                        <MyProduct />
+                    </SellerRoute>
+                ),
             },
             {
                 path: "/dashboard/alluser",
                 element: (
                     <AdminRoute>
-
                         <AllUser />
                     </AdminRoute>
-                    // <AllUser />
                 ),
             },
+
             {
                 // TODO: payment
                 path: "/dashboard/payment/:id",

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
+import UseSeller from "../hooks/useSeller";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
 
 const DashboardLayout = () => {
@@ -9,6 +10,7 @@ const DashboardLayout = () => {
     const {user} = useContext(AuthContext)
 
     const [admin] = useAdmin(user?.email)
+    const [seller] = UseSeller(user?.email);
 
     console.log(admin);
 
@@ -41,11 +43,11 @@ const DashboardLayout = () => {
                                         All User
                                     </Link>
                                 </li>
-                                {/* <li>
+                                <li>
                                     <Link to="/dashboard/addproduct">
                                         Add Product
                                     </Link>
-                                </li> */}
+                                </li>
                                 <li>
                                     <Link to="/dashboard/allseller">
                                         All seller
@@ -64,24 +66,20 @@ const DashboardLayout = () => {
                             </>
                         )}
 
-                        {/* <li>
-                            <Link to="/dashboard/alluser">All User</Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/addproduct">Add Product</Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/allseller">All seller</Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/allbuyer">All buyer</Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/myorders">My Orders</Link>
-                        </li> */}
-                        <li>
-                            <Link to="/dashboard/addproduct">Add Product</Link>
-                        </li>
+                        {seller && (
+                            <>
+                                <li>
+                                    <Link to="/dashboard/addproduct">
+                                        Add Product
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/dashboard/myproduct">
+                                        My Product
+                                    </Link>
+                                </li>
+                            </>
+                        )}
                     </ul>
                 </div>
             </div>

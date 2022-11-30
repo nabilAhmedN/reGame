@@ -4,10 +4,10 @@ import banner from "../../assets/images/img-1.jpg";
 
 const Banner = () => {
     return (
-        <div 
+        <div
             className="hero min-h-screen rounded-xl"
             style={{
-                backgroundImage: `url(${banner})`
+                backgroundImage: `url(${banner})`,
             }}
         >
             <div className="hero-overlay bg-opacity-50 rounded-xl"></div>
@@ -17,12 +17,12 @@ const Banner = () => {
                         ReGame
                     </h1>
                     <p className="mb-5 font-medium text-gray-200">
-                        Shutter Up offers a variety of inexpensive bundles with
-                        high-quality services that are hard to obtain elsewhere.{" "}
+                     
+                        <span className="text-pink-400 text-3xl">Buy</span>,{" "}
+                        <span className="text-2xl">Play</span> ,{" "}
+                        <span className="text-pink-400 text-3xl">Sell</span>{" "}
                         <br />
-                        Shutter Up provide a broad range of photography and
-                        videography services, including wedding, pre/post
-                        wedding and so on.
+                        <span className="text-2xl">Repate</span>
                     </p>
                     <Link to="/login">
                         <button className="btn btn-primary">Get Started</button>
