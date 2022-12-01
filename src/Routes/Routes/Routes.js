@@ -14,6 +14,7 @@ import Payment from "../../Pages/Dashboard/Payment/Payment";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
+import Report from "../../Pages/Report/Report";
 import SignUp from "../../Pages/SignUp/SignUp";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        // errorElement: <ErrorPage />,
+        errorElement: <ErrorPage />,
         element: (
             <PrivateRoute>
                 <DashboardLayout />
@@ -96,9 +97,12 @@ const router = createBrowserRouter([
                     </AdminRoute>
                 ),
             },
+            {
+                path: "/dashboard/report",
+                element: <Report/>
+            },
 
             {
-                // TODO: payment
                 path: "/dashboard/payment/:id",
                 element: <Payment />,
                 loader: ({ params }) =>

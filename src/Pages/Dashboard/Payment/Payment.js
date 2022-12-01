@@ -8,7 +8,6 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 console.log(stripePromise);
 
 const Payment = () => {
-    // TODO: payment
     const booking = useLoaderData();
     console.log("booking data", booking);
 

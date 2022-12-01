@@ -8,7 +8,6 @@ const PrivateRoute = ({ children }) => {
     const location = useLocation();
 
     if (loading) {
-        // return <progress className="progress w-56"></progress>;
         return <img className="mx-auto d-block" src={load} alt="" />;
     }
 

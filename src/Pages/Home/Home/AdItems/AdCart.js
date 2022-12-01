@@ -1,5 +1,5 @@
 import React from "react";
-import { GoVerified } from "react-icons/go";
+import { MdVerifiedUser } from "react-icons/md";
 
 const AdCart = ({ category }) => {
     const {
@@ -20,21 +20,23 @@ const AdCart = ({ category }) => {
             <div className="card-body items-center justify-end">
                 <h2 className="card-title">
                     {game_name}
-                    {verified !== "false" ? (
-                        <>
-                            <div className="badge badge-secondary">
-                                <GoVerified className="text-white" />
-                            </div>
-                        </>
-                    ) : (
-                        <></>
-                    )}
                 </h2>
                 <p>Resale Price: ${resale_price}</p>
                 <p>Origal Price: ${original_price}</p>
                 <p>Range of Used: {year_used} Month </p>
                 <p>Post On: {registered.slice(0, 10)}</p>
-                <p>Saller: {seler_name}</p>
+                <p>
+                    Saller: {seler_name}{" "}
+                    {verified !== "false" ? (
+                        <>
+                            <div className="badge badge-secondary">
+                                <MdVerifiedUser className="text-white" />
+                            </div>
+                        </>
+                    ) : (
+                        <></>
+                    )}
+                </p>
             </div>
         </div>
     );

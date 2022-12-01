@@ -6,9 +6,6 @@ const Categorization = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() =>{
-        // fetch("http://localhost:5000/categories")
-        //     .then((res) => res.json())
-        //     .then((data) => setCategories(data));
         axios
             .get("http://localhost:5000/categories")
             .then((data) => setCategories(data.data));

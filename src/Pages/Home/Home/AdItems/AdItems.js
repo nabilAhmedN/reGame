@@ -1,10 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-// import React, { useContext } from 'react';
+import React from 'react';
 // import { AuthContext } from '../../../../contexts/AuthProvider';
 import AdCart from './AdCart';
 
 const AdItems = () => {
-    // const { user } = useContext(AuthContext);
     const { data: userdata = [], refetch } = useQuery({
         queryKey: ["allrole"],
         queryFn: async () => {

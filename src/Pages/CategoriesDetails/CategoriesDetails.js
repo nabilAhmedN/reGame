@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import AllCategoriesDetails from '../AllCategoriesDetails/AllCategoriesDetails';
 import BookModal from '../AllCategoriesDetails/BookModal/BookModal';
@@ -8,14 +9,19 @@ const CategoriesDetails = () => {
 
     const id = params.id;
 
-    const [category, setCategory] = useState([]);
+    // const [category, setCategory] = useState([]);
     const [gameName, setGameName] = useState(null);
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/category?title=${id}`)
-            .then((res) => res.json())
-            .then((data) => setCategory(data));
-    }, [id])
+    const { data: category = [], refetch } = useQuery({
+        queryKey: ["allrole", id],
+        queryFn: async () => {
+            const res = await fetch(
+                `http://localhost:5000/category?title=${id}`
+            );
+            const data = await res.json();
+            return data;
+        },
+    });
 
     return (
         <div>
@@ -25,13 +31,13 @@ const CategoriesDetails = () => {
                         key={catego._id}
                         catego={catego}
                         setGameName={setGameName}
+                        refetch={refetch}
                     />
                 ))}
             </div>
-            {
-                gameName && 
+            {gameName && (
                 <BookModal gameName={gameName} setGameName={setGameName} />
-                }
+            )}
         </div>
     );
 };

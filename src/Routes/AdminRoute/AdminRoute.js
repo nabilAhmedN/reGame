@@ -12,7 +12,6 @@ const AdminRoute = ({ children }) => {
     const [admin, adminLoading] = useAdmin(user?.email);
 
     if (loading || adminLoading) {
-        // return <progress className="progress w-56"></progress>;
         return <img className="mx-auto d-block" src={load} alt="" />;
     }
 

@@ -1,16 +1,51 @@
-import { useQuery } from '@tanstack/react-query';
-import toast from 'react-hot-toast';
+import { useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 const AllSeller = () => {
-
     const { data: setSeller = [], refetch } = useQuery({
         queryKey: ["allrole"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allrole?role=Seller`);
+            const res = await fetch(
+                `http://localhost:5000/allrole?role=Seller`
+            );
             const data = await res.json();
             return data;
         },
     });
+
+    const handleStatusUpdate = (id, email) => {
+        console.log(id, email);
+        fetch(`http://localhost:5000/verifiedcataupdate/${email}`, {
+            method: "PATCH",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({ verified: "true" }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    toast.success("Successfully Veryfied!");
+                    refetch();
+                }
+            });
+        fetch(`http://localhost:5000/verifiedupdate/${id}`, {
+            method: "PATCH",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({ verified: "true" }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    toast.success("Successfully Veryfied!");
+                    refetch();
+                }
+            });
+    };
 
     const handleDelete = (id) => {
         const proceed = window.confirm(
@@ -29,7 +64,7 @@ const AllSeller = () => {
                     }
                 });
         }
-    }; 
+    };
 
     return (
         <div>
@@ -51,9 +86,29 @@ const AllSeller = () => {
                                 <td>{Seller.name}</td>
                                 <td>{Seller.email}</td>
                                 <td>
-                                    <button className="btn btn-xs btn-primary">
-                                        Verify
-                                    </button>
+                                    {Seller.verified !== "true" ? (
+                                        <>
+                                            <label
+                                                className="btn btn-xs btn-primary"
+                                                onClick={() =>
+                                                    handleStatusUpdate(
+                                                        Seller._id,
+                                                        Seller.email
+                                                    )
+                                                }
+                                            >
+                                                Verify
+                                            </label>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <label
+                                                className="btn btn-xs btn-primary"
+                                            >
+                                                verified
+                                            </label>
+                                        </>
+                                    )}
                                 </td>
                                 <td>
                                     <button
