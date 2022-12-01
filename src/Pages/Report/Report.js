@@ -35,7 +35,7 @@ const Report = () => {
 
     return (
         <div className="overflow-x-auto">
-            {/* <table className="table w-full">
+            <table className="table w-full">
                 <thead>
                     <tr>
                         <th></th>
@@ -65,7 +65,7 @@ const Report = () => {
                         </tr>
                     ))}
                 </tbody>
-            </table> */}
+            </table>
         </div>
     );
 };
