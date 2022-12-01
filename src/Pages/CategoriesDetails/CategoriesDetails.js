@@ -19,7 +19,6 @@ const CategoriesDetails = () => {
 
     return (
         <div>
-            <h2>this is category: {category.length}</h2>
             <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-4">
                 {category.map((catego) => (
                     <AllCategoriesDetails

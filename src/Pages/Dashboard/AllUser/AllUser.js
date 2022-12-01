@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
-// import toast from 'react-hot-toast';
 
 const AllUser = () => {
     const { data: allrole = [], refetch } = useQuery({
@@ -13,21 +12,21 @@ const AllUser = () => {
         },
     });
 
-    const handleMakeAdmin = (id) => {
-        fetch(`http://localhost:5000/allrole/admin/${id}`, {
-            method: "PUT",
-            headers: {
-                authorization: `bearer ${localStorage.getItem("accessToken")}`,
-            },
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.modifiedCount > 0) {
-                    toast.success("make admin successfully");
-                    refetch();
-                }
-            });
-    };
+    // const handleMakeAdmin = (id) => {
+    //     fetch(`http://localhost:5000/allrole/admin/${id}`, {
+    //         method: "PUT",
+    //         headers: {
+    //             authorization: `bearer ${localStorage.getItem("accessToken")}`,
+    //         },
+    //     })
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //             if (data.modifiedCount > 0) {
+    //                 toast.success("make admin successfully");
+    //                 refetch();
+    //             }
+    //         });
+    // };
 
 
     return (
@@ -39,7 +38,7 @@ const AllUser = () => {
                         <th>Name</th>
                         <th>Email</th>
                         <th>UserType</th>
-                        <th>Admin</th>
+                        {/* <th>Admin</th> */}
                         <th>Delete</th>
                     </tr>
                 </thead>
@@ -50,7 +49,7 @@ const AllUser = () => {
                             <td>{users.name}</td>
                             <td>{users.email}</td>
                             <td>{users.role}</td>
-                            <td>
+                            {/* <td>
                                 {users?.role !== "admin" && (
                                     <button
                                         onClick={() =>
@@ -61,7 +60,7 @@ const AllUser = () => {
                                         Make Admin
                                     </button>
                                 )}
-                            </td>
+                            </td> */}
                             <td>
                                 <button className="btn btn-xs text-red-400">
                                     Delete

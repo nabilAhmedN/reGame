@@ -8,11 +8,6 @@ const Process = () => {
     return (
         <section className="bg-white ">
             <div className="py-8 px-10 mx-auto max-w-screen-xl lg:py-4 lg:px-10">
-                {/* <div className="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
-                    <h2 className="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 ">
-                        How it works?
-                    </h2>
-                </div> */}
                 <div className="grid gap-4 lg:grid-cols-4">
                     <article className="w-64 p-6 rounded-lg border shadow-md bg-fuchsia-100 ">
                         <FaShippingFast className="text-5xl m-auto" />

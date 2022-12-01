@@ -1,5 +1,5 @@
 import React from "react";
-import { GoVerified } from "react-icons/go";
+import { MdVerifiedUser } from "react-icons/md";
 
 const AllCategoriesDetails = ({ catego, setGameName }) => {
     const {
@@ -24,7 +24,7 @@ const AllCategoriesDetails = ({ catego, setGameName }) => {
                     {verified ? (
                         <>
                             <div className="badge badge-secondary">
-                                <GoVerified className="text-white" />
+                                <MdVerifiedUser className="text-white" />
                             </div>
                         </>
                     ) : (

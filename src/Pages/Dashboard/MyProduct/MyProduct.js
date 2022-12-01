@@ -1,43 +1,60 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
-import toast from 'react-hot-toast';
-import { AuthContext } from '../../../contexts/AuthProvider';
+import { useQuery } from "@tanstack/react-query";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 const MyProduct = () => {
-
-    const {user} = useContext(AuthContext);
-    const {data: mydata = [], refetch} = useQuery({
-        queryKey: ['allrole'],
-        queryFn: async() =>{
-            const res = await fetch(`http://localhost:5000/mydata?email=${user?.email}`);
+    const { user } = useContext(AuthContext);
+    const { data: mydata = [], refetch } = useQuery({
+        queryKey: ["allrole"],
+        queryFn: async () => {
+            const res = await fetch(
+                `http://localhost:5000/mydata?email=${user?.email}`
+            );
             const data = await res.json();
             return data;
-        }
+        },
     });
 
-    const handleStatusUpdate = id => {
-
+    const handleStatusUpdate = (id) => {
         console.log(id);
         fetch(`http://localhost:5000/advertiseupdate/${id}`, {
-            method: 'PATCH', 
+            method: "PATCH",
             headers: {
-                'content-type': 'application/json'
+                "content-type": "application/json",
             },
-            body: JSON.stringify({advertise: 'true'})
+            body: JSON.stringify({ advertise: "true" }),
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if(data.modifiedCount > 0) {
-                toast.success("Successfully Adertise");
-                refetch();
-                
-            }
-        })
-    }
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    toast.success("Successfully Adertise");
+                    refetch();
+                }
+            });
+    };
+    const handleDelete = (id) => {
+        const proceed = window.confirm(
+            "Are you sure, you want to cancel this Products"
+        );
+        if (proceed) {
+            fetch(`http://localhost:5000/deleteproduct/${id}`, {
+                method: "DELETE",
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        toast.success("Successfully Adertise");
+                        refetch();
+                    }
+                });
+        }
+    };
+
     return (
         <div>
-            <h2>This is All user</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -83,7 +100,10 @@ const MyProduct = () => {
                                     )}
                                 </td>
                                 <td>
-                                    <button className="btn btn-xs text-red-400">
+                                    <button
+                                        className="btn btn-xs text-red-400"
+                                        onClick={() => handleDelete(users._id)}
+                                    >
                                         Delete
                                     </button>
                                 </td>

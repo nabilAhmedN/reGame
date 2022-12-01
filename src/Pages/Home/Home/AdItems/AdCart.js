@@ -6,7 +6,6 @@ const AdCart = ({ category }) => {
         game_name,
         img,
         verified,
-        location,
         resale_price,
         original_price,
         year_used,
@@ -33,9 +32,9 @@ const AdCart = ({ category }) => {
                 </h2>
                 <p>Resale Price: ${resale_price}</p>
                 <p>Origal Price: ${original_price}</p>
-                <p>Range of Used: {year_used} Year </p>
+                <p>Range of Used: {year_used} Month </p>
                 <p>Post On: {registered.slice(0, 10)}</p>
-                <p>Saler: {seler_name}</p>
+                <p>Saller: {seler_name}</p>
             </div>
         </div>
     );

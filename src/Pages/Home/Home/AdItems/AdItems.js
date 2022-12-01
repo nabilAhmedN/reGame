@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
-import { AuthContext } from '../../../../contexts/AuthProvider';
+// import React, { useContext } from 'react';
+// import { AuthContext } from '../../../../contexts/AuthProvider';
 import AdCart from './AdCart';
 
 const AdItems = () => {
-    const { user } = useContext(AuthContext);
+    // const { user } = useContext(AuthContext);
     const { data: userdata = [], refetch } = useQuery({
         queryKey: ["allrole"],
         queryFn: async () => {
@@ -26,7 +26,6 @@ const AdItems = () => {
             ) : (
                 <></>
             )}
-            {/* <h2 className="text-center font-bold text-2xl mt-10">Ad</h2> */}
             <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 m-6 ">
                 {userdata.map((category) => (
                     <AdCart key={category._id} category={category}></AdCart>

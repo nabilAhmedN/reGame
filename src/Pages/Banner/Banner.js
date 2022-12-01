@@ -17,9 +17,8 @@ const Banner = () => {
                         ReGame
                     </h1>
                     <p className="mb-5 font-medium text-gray-200">
-                     
-                        <span className="text-pink-400 text-3xl">Buy</span>,{" "}
-                        <span className="text-2xl">Play</span> ,{" "}
+                        <span className="text-pink-400 text-3xl"> Buy</span>{" "}
+                        <span className="text-2xl">Play</span>{" "}
                         <span className="text-pink-400 text-3xl">Sell</span>{" "}
                         <br />
                         <span className="text-2xl">Repate</span>

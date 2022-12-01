@@ -16,7 +16,6 @@ const Payment = () => {
 
     return (
         <div>
-            <h3>{booking.game_name} ar jonno taka dy</h3>
             <p className="text-xl">
                 Please pay <strong>{price}BDT</strong> for the purchase{" "}
                 <strong>{game_name}</strong> at {location}

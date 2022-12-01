@@ -24,7 +24,6 @@ const GameBooked = () => {
 
     return (
         <div>
-            <h2>Game is booked</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

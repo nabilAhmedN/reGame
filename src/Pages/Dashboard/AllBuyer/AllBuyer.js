@@ -1,17 +1,37 @@
-import React, { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 const AllBuyer = () => {
-    const [buyer, setBuyer] = useState([]);
+    const { data: setBuyer = [], refetch } = useQuery({
+        queryKey: ["allrole"],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/allrole?role=Buyer`);
+            const data = await res.json();
+            return data;
+        },
+    });
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/users?role=Buyer`)
-            .then((res) => res.json())
-            .then((data) => setBuyer(data));
-    }, []);
+    const handleDelete = (id) => {
+        const proceed = window.confirm(
+            "Are you sure? you want to delete this Buyer!"
+        );
+        if (proceed) {
+            fetch(`http://localhost:5000/deleteuser/${id}`, {
+                method: "DELETE",
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        toast.success("Successfully Adertise");
+                        refetch();
+                    }
+                });
+        }
+    }; 
 
     return (
         <div>
-            <h2>All seller: {buyer.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -19,23 +39,26 @@ const AllBuyer = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Verify</th>
+                            {/* <th>Verify</th> */}
                             <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {buyer.map((Seller, index) => (
+                        {setBuyer.map((Seller, index) => (
                             <tr key={Seller._id}>
                                 <th>{index + 1}</th>
                                 <td>{Seller.name}</td>
                                 <td>{Seller.email}</td>
-                                <td>
+                                {/* <td>
                                     <button className="btn btn-xs btn-primary">
                                         Verify
                                     </button>
-                                </td>
+                                </td> */}
                                 <td>
-                                    <button className="btn btn-xs text-red-400">
+                                    <button
+                                        className="btn btn-xs text-red-400"
+                                        onClick={() => handleDelete(Seller._id)}
+                                    >
                                         Delete
                                     </button>
                                 </td>
