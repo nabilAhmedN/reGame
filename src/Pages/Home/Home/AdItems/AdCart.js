@@ -24,7 +24,7 @@ const AdCart = ({ category }) => {
                 <p>Resale Price: ${resale_price}</p>
                 <p>Origal Price: ${original_price}</p>
                 <p>Range of Used: {year_used} Month </p>
-                <p>Post On: {registered.slice(0, 10)}</p>
+                <p>Post On: {registered?.slice(0, 10)}</p>
                 <p>
                     Saller: {seler_name}{" "}
                     {verified !== "false" ? (
