@@ -1,13 +1,13 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import toast from 'react-hot-toast';
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
+import toast from "react-hot-toast";
 
 const Report = () => {
-    const { data: report= [], refetch } = useQuery({
+    const { data: report = [], refetch } = useQuery({
         queryKey: ["allrole"],
         queryFn: async () => {
             const res = await fetch(
-                `http://localhost:5000/allproduct?report=true`
+                `https://re-game-server.vercel.app/allproduct?report=true`
             );
             const data = await res.json();
             return data;
@@ -19,7 +19,7 @@ const Report = () => {
             "Are you sure, you want to cancel this Products"
         );
         if (proceed) {
-            fetch(`http://localhost:5000/deleteproduct/${id}`, {
+            fetch(`https://re-game-server.vercel.app/deleteproduct/${id}`, {
                 method: "DELETE",
             })
                 .then((res) => res.json())

@@ -9,7 +9,7 @@ const MyProduct = () => {
         queryKey: ["allrole"],
         queryFn: async () => {
             const res = await fetch(
-                `http://localhost:5000/mydata?email=${user?.email}`
+                `https://re-game-server.vercel.app/mydata?email=${user?.email}`
             );
             const data = await res.json();
             return data;
@@ -18,7 +18,7 @@ const MyProduct = () => {
 
     const handleStatusUpdate = (id) => {
         console.log(id);
-        fetch(`http://localhost:5000/advertiseupdate/${id}`, {
+        fetch(`https://re-game-server.vercel.app/advertiseupdate/${id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json",
@@ -39,7 +39,7 @@ const MyProduct = () => {
             "Are you sure, you want to cancel this Products"
         );
         if (proceed) {
-            fetch(`http://localhost:5000/deleteproduct/${id}`, {
+            fetch(`https://re-game-server.vercel.app/deleteproduct/${id}`, {
                 method: "DELETE",
             })
                 .then((res) => res.json())

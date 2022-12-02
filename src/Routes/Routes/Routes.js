@@ -8,7 +8,6 @@ import AllBuyer from "../../Pages/Dashboard/AllBuyer/AllBuyer";
 import AllSeller from "../../Pages/Dashboard/AllSeller/AllSeller";
 import AllUser from "../../Pages/Dashboard/AllUser/AllUser";
 import GameBooked from "../../Pages/Dashboard/GameBooked/GameBooked";
-import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import MyProduct from "../../Pages/Dashboard/MyProduct/MyProduct";
 import Payment from "../../Pages/Dashboard/Payment/Payment";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
@@ -70,10 +69,6 @@ const router = createBrowserRouter([
                 element: <AllBuyer />,
             },
             {
-                path: "/dashboard/myorders",
-                element: <MyOrders />,
-            },
-            {
                 path: "/dashboard/addproduct",
                 element: (
                     <SellerRoute>
@@ -99,14 +94,16 @@ const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/report",
-                element: <Report/>
+                element: <Report />,
             },
 
             {
                 path: "/dashboard/payment/:id",
                 element: <Payment />,
                 loader: ({ params }) =>
-                    fetch(`http://localhost:5000/bookings/${params.id}`),
+                    fetch(
+                        `https://re-game-server.vercel.app/bookings/${params.id}`
+                    ),
             },
         ],
     },

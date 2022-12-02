@@ -53,8 +53,8 @@ const SignUp = () => {
     const [createdUserEmail, setCreatedUserEmail] = useState("");
     const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
-    if(token){
-        navigate('/')
+    if (token) {
+        navigate("/");
     }
 
     const handleSignUp = (data) => {
@@ -84,7 +84,7 @@ const SignUp = () => {
             email,
             role,
         };
-        fetch("http://localhost:5000/signup", {
+        fetch("https://re-game-server.vercel.app/signup", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -95,14 +95,13 @@ const SignUp = () => {
             .then((data) => {
                 console.log(data);
                 if (data.acknowledged) {
-                    setCreatedUserEmail(email)
+                    setCreatedUserEmail(email);
                     toast.success("Signup Successfully");
                 }
             });
     };
 
     return (
-
         <div className="h-[500px] flex justify-center items-center">
             <div className="w-96 p-7">
                 <h1 className="text-4xl text-center font-bold">Sign Up</h1>

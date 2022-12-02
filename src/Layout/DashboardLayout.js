@@ -33,7 +33,7 @@ const DashboardLayout = () => {
                     ></label>
                     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
                         <li>
-                            <Link to="/dashboard">Booked Game</Link>
+                            <Link to="/dashboard">My Orders</Link>
                         </li>
 
                         {admin && (
@@ -56,11 +56,6 @@ const DashboardLayout = () => {
                                 <li>
                                     <Link to="/dashboard/allbuyer">
                                         All buyer
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/dashboard/myorders">
-                                        My Orders
                                     </Link>
                                 </li>
                                 <li>

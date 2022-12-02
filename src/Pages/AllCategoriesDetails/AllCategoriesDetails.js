@@ -20,7 +20,7 @@ const AllCategoriesDetails = ({ catego, setGameName, refetch }) => {
         toast.success("Successfully Reported!");
 
         console.log(id);
-        fetch(`http://localhost:5000/reportupdate/${id}`, {
+        fetch(`https://re-game-server.vercel.app/reportupdate/${id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json",

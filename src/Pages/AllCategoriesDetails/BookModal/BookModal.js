@@ -5,11 +5,7 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 const BookModal = ({ gameName, setGameName }) => {
     const { user } = useContext(AuthContext);
 
-    const {
-        img,
-        game_name,
-        resale_price,
-    } = gameName;
+    const { img, game_name, resale_price } = gameName;
 
     const handleBooking = (event) => {
         const form = event.target;
@@ -20,7 +16,7 @@ const BookModal = ({ gameName, setGameName }) => {
         const price = form.price.value;
         const phone = form.phone.value;
         const location = form.location.value;
-        
+
         const booking = {
             name,
             email,
@@ -30,22 +26,22 @@ const BookModal = ({ gameName, setGameName }) => {
             phone,
             location,
         };
-        fetch('http://localhost:5000/bookingsgame', {
-            method: 'POST',
+        fetch("https://re-game-server.vercel.app/bookingsgame", {
+            method: "POST",
             headers: {
-                'content-type': 'application/json'
+                "content-type": "application/json",
             },
-            body: JSON.stringify(booking)
+            body: JSON.stringify(booking),
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if(data.acknowledged){
-                setGameName(null);
-                toast.success("Your booking is confirmed");
-            }
-        })
-    }
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                if (data.acknowledged) {
+                    setGameName(null);
+                    toast.success("Your booking is confirmed");
+                }
+            });
+    };
 
     return (
         <div>

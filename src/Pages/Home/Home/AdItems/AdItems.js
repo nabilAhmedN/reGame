@@ -1,14 +1,14 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
 // import { AuthContext } from '../../../../contexts/AuthProvider';
-import AdCart from './AdCart';
+import AdCart from "./AdCart";
 
 const AdItems = () => {
     const { data: userdata = [], refetch } = useQuery({
         queryKey: ["allrole"],
         queryFn: async () => {
             const res = await fetch(
-                "http://localhost:5000/mydata?advertise=true"
+                "https://re-game-server.vercel.app/mydata?advertise=true"
             );
             const data = await res.json();
             return data;

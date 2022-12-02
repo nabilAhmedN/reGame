@@ -1,11 +1,13 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
 
 const AllUser = () => {
     const { data: allrole = [], refetch } = useQuery({
         queryKey: ["allrole"],
         queryFn: async () => {
-            const res = await fetch("http://localhost:5000/allrole");
+            const res = await fetch(
+                "https://re-game-server.vercel.app/allrole"
+            );
             const data = await res.json();
             return data;
         },

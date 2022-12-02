@@ -6,7 +6,7 @@ const AllSeller = () => {
         queryKey: ["allrole"],
         queryFn: async () => {
             const res = await fetch(
-                `http://localhost:5000/allrole?role=Seller`
+                `https://re-game-server.vercel.app/allrole?role=Seller`
             );
             const data = await res.json();
             return data;
@@ -15,7 +15,7 @@ const AllSeller = () => {
 
     const handleStatusUpdate = (id, email) => {
         console.log(id, email);
-        fetch(`http://localhost:5000/verifiedcataupdate/${email}`, {
+        fetch(`https://re-game-server.vercel.app/verifiedcataupdate/${email}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json",
@@ -30,7 +30,7 @@ const AllSeller = () => {
                     refetch();
                 }
             });
-        fetch(`http://localhost:5000/verifiedupdate/${id}`, {
+        fetch(`https://re-game-server.vercel.app/verifiedupdate/${id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json",
@@ -52,7 +52,7 @@ const AllSeller = () => {
             "Are you sure? you want to delete this Seller!"
         );
         if (proceed) {
-            fetch(`http://localhost:5000/deleteuser/${id}`, {
+            fetch(`https://re-game-server.vercel.app/deleteuser/${id}`, {
                 method: "DELETE",
             })
                 .then((res) => res.json())
@@ -102,9 +102,7 @@ const AllSeller = () => {
                                         </>
                                     ) : (
                                         <>
-                                            <label
-                                                className="btn btn-xs btn-primary"
-                                            >
+                                            <label className="btn btn-xs btn-primary">
                                                 verified
                                             </label>
                                         </>

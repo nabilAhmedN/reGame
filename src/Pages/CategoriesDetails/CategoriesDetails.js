@@ -1,8 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import AllCategoriesDetails from '../AllCategoriesDetails/AllCategoriesDetails';
-import BookModal from '../AllCategoriesDetails/BookModal/BookModal';
+import { useQuery } from "@tanstack/react-query";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import AllCategoriesDetails from "../AllCategoriesDetails/AllCategoriesDetails";
+import BookModal from "../AllCategoriesDetails/BookModal/BookModal";
 
 const CategoriesDetails = () => {
     const params = useParams();
@@ -16,7 +16,7 @@ const CategoriesDetails = () => {
         queryKey: ["allrole", id],
         queryFn: async () => {
             const res = await fetch(
-                `http://localhost:5000/category?title=${id}`
+                `https://re-game-server.vercel.app/category?title=${id}`
             );
             const data = await res.json();
             return data;

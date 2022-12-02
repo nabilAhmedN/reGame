@@ -5,11 +5,11 @@ import axios from "axios";
 const Categorization = () => {
     const [categories, setCategories] = useState([]);
 
-    useEffect(() =>{
+    useEffect(() => {
         axios
-            .get("http://localhost:5000/categories")
+            .get("https://re-game-server.vercel.app/categories")
             .then((data) => setCategories(data.data));
-    },[])
+    }, []);
 
     return (
         <div className="mt-6">

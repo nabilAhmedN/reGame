@@ -1,5 +1,6 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const CheckoutForm = ({ booking }) => {
     const [cardError, setCardError] = useState("");
@@ -9,10 +10,10 @@ const CheckoutForm = ({ booking }) => {
     const [clientSecret, setClientSecret] = useState("");
     const stripe = useStripe();
     const elements = useElements();
-    const { price, email, name, _id} = booking;
+    const { price, email, name, _id } = booking;
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://re-game-server.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -46,8 +47,8 @@ const CheckoutForm = ({ booking }) => {
         } else {
             setCardError("");
         }
-        setSuccess('')
-        setProcessing(true)
+        setSuccess("");
+        setProcessing(true);
         const { paymentIntent, error: confirmError } =
             await stripe.confirmCardPayment(clientSecret, {
                 payment_method: {
@@ -58,42 +59,43 @@ const CheckoutForm = ({ booking }) => {
                     },
                 },
             });
-            if (confirmError) {
-                setCardError(confirmError.message);
-                return;
-            }
-            if(paymentIntent.status === "succeeded"){
-                console.log('card info', card);
-                setSuccess('Congrats!, your payment completed')
-                setTransactionId(paymentIntent.id)
+        if (confirmError) {
+            setCardError(confirmError.message);
+            return;
+        }
+        if (paymentIntent.status === "succeeded") {
+            console.log("card info", card);
+            setSuccess("Congrats!, your payment completed");
+            setTransactionId(paymentIntent.id);
 
-                const payment = {
-                    price,
-                    transactionId: paymentIntent.id,
-                    email,
-                    bookingId: _id,
-                };
-                fetch("http://localhost:5000/payments", {
-                    method: "POST",
-                    headers: {
-                        "content-type": "application/json",
-                        authorization: `bearer ${localStorage.getItem(
-                            "accessToken"
-                        )}`,
-                    },
-                    body: JSON.stringify(payment),
-                })
-                    .then((res) => res.json())
-                    .then((data) => {
-                        console.log(data);
-                        if (data.insertedId) {
-                            setSuccess("Congrats! your payment completed");
-                            setTransactionId(paymentIntent.id);
-                        }
-                    });
+            const payment = {
+                price,
+                transactionId: paymentIntent.id,
+                email,
+                bookingId: _id,
+            };
+            fetch("https://re-game-server.vercel.app/payments", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                    authorization: `bearer ${localStorage.getItem(
+                        "accessToken"
+                    )}`,
+                },
+                body: JSON.stringify(payment),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                    if (data.insertedId) {
+                        setSuccess("Congrats! your payment completed");
+                        setTransactionId(paymentIntent.id);
+                        toast.success("Payment Successful");
+                    }
+                });
 
-                setProcessing(false)
-            }
+            setProcessing(false);
+        }
     };
 
     return (

@@ -5,7 +5,9 @@ const AllBuyer = () => {
     const { data: setBuyer = [], refetch } = useQuery({
         queryKey: ["allrole"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allrole?role=Buyer`);
+            const res = await fetch(
+                `https://re-game-server.vercel.app/allrole?role=Buyer`
+            );
             const data = await res.json();
             return data;
         },
@@ -16,7 +18,7 @@ const AllBuyer = () => {
             "Are you sure? you want to delete this Buyer!"
         );
         if (proceed) {
-            fetch(`http://localhost:5000/deleteuser/${id}`, {
+            fetch(`https://re-game-server.vercel.app/deleteuser/${id}`, {
                 method: "DELETE",
             })
                 .then((res) => res.json())
@@ -28,7 +30,7 @@ const AllBuyer = () => {
                     }
                 });
         }
-    }; 
+    };
 
     return (
         <div>

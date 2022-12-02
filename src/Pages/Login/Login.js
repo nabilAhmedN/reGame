@@ -9,7 +9,6 @@ import toast from "react-hot-toast";
 import useToken from "../../hooks/useToken";
 
 const Login = () => {
-
     const {
         register,
         formState: { errors },
@@ -59,7 +58,7 @@ const Login = () => {
                     role,
                 };
 
-                fetch("http://localhost:5000/login", {
+                fetch("https://re-game-server.vercel.app/login", {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",

@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
-
 const AddProducts = () => {
     const { user } = useContext(AuthContext);
 
@@ -27,10 +26,10 @@ const AddProducts = () => {
         const img = data.photo;
         const condition = data.condition;
         const description = data.description;
-        const verified = 'false';
-        const report = 'false';
-        const advertise = 'false';
-        const isSoled = 'false';
+        const verified = "false";
+        const report = "false";
+        const advertise = "false";
+        const isSoled = "false";
         const dateobj = new Date();
         const registered = dateobj.toISOString();
         const addProduct = {
@@ -52,7 +51,7 @@ const AddProducts = () => {
             isSoled,
             registered,
         };
-        fetch("http://localhost:5000/addproduct", {
+        fetch("https://re-game-server.vercel.app/addproduct", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
