@@ -1,7 +1,5 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-// import Logimg from "../../assets/images/logimg.png";
-// import { FaGoogle } from "react-icons/fa";
 import { GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { useForm } from "react-hook-form";
