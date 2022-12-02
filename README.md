@@ -14,5 +14,5 @@ Hosted in Firebase -> [ReGame](https://re-game-71d77.web.app/)
 Freamwork and library:- Here I use Tailwind Css, daisyUI, Firebase, react icon, React Router Dom, react hot toast, react query, axios.
 
 ## admin
-adminEmail: admin@g.com
+adminEmail: admin@g.com <br/>
 adminPassword: admin1
