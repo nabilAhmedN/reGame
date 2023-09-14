@@ -116,7 +116,7 @@ const Login = () => {
         <div className='container mx-auto'>
             <div className="w-full max-h-auto d-block min-h-screen p-4 flex items-center justify-center" >
                 <div className="bg-base-100 py-6 px-10 sm:max-w-md w-full ">
-                    <div className="text-2xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-warning to-primary pb-12">
+                    <div className="text-2xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-purple-500 pb-12">
                         Login to reGame
                     </div>
                     <form onSubmit={handleSubmit(handleLogin)} >
@@ -126,7 +126,7 @@ const Login = () => {
                             </label>
                             <input type="text" onBlur={handleEmailBlur}
                                 {...register("email", { required: "Your email is required." })}
-                                className="focus:outline-none border w-full p-2 border-amber-500 placeholder-orange-200" placeholder="info@timecraft.com" />
+                                className="focus:outline-none border w-full p-2 border-[#D0BFFF] placeholder-[#b9abdf]" placeholder="typeYourMail@reGame.com" />
                             {errors.email && <p className='text-error my-2'>{errors.email.message}</p>}
                         </div>
                         <div className="my-6">
@@ -139,7 +139,7 @@ const Login = () => {
                                     minLength: { value: 6, message: "Password must be 6 characters long" },
                                     pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'Password must have uppercase, number and special characters' }
                                 })}
-                                className="focus:outline-none border w-full p-2 border-amber-500 placeholder-orange-200"
+                                className="focus:outline-none border w-full p-2 border-[#D0BFFF] placeholder-[#b9abdf]"
                                 placeholder="********" />
                             <label className="label">
                                 <button onClick={passwordReset}
@@ -149,7 +149,7 @@ const Login = () => {
                         </div>
                         {errors.accepted && <p className='text-error my-2'>{errors.accepted.message}</p>}
                         <div className="flex justify-center my-6">
-                            <input className="btn btn-outline rounded-full w-full sm:w-56 text-lg font-semibold "
+                            <input className="btn btn-outline btn-primary rounded-full w-full sm:w-56 text-lg font-semibold "
                                 type="submit" value="Login"
                             />
                         </div>
@@ -157,14 +157,14 @@ const Login = () => {
                             loginError && <p className='text-center text-error my-2'>{loginError}</p>
                         }
                         <div className="flex justify-center ">
-                            <p className="text-gray-500">Don't have an account? </p>
-                            <Link to={'/register'} className="hover:text-warning hover:underline hover:underline-offset-2 pl-2">Register</Link>
+                            <p className="text-gray-500">New to reGame? </p>
+                            <Link to={'/register'} className="hover:text-primary hover:underline hover:underline-offset-2 pl-2">Register</Link>
                         </div>
                     </form>
                     <div className="divider">OR</div>
                     <div className="flex justify-center my-6">
                         <button onClick={googleHandle}
-                            className="flex flex-row btn btn-outline rounded-full gap-4 text-sm md:text-lg">
+                            className="flex flex-row btn btn-outline btn-primary rounded-full gap-4 text-sm md:text-lg">
                             <span>Login With Google</span> <FaGoogle></FaGoogle>
                         </button>
                     </div>

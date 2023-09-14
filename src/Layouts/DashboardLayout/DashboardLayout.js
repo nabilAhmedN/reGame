@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { UserContext } from '../../context/UserValidation';
@@ -17,13 +16,13 @@ const DashboardLayout = () => {
     const dashboardMenu = <>
         {
             isBuyer && <>
-                <li><NavLink className={({ isActive }) => isActive ? "btn btn-sm md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"} to={'/dashboard/buyer/MyORders'}>My orders</NavLink></li>
+                <li><NavLink className={({ isActive }) => isActive ? "btn btn-primary btn-sm md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"} to={'/dashboard/buyer/MyORders'}>My orders</NavLink></li>
             </>
         }
         {
             isSeller && <>
-                <li><NavLink className={({ isActive }) => isActive ? "btn btn-sm md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"} to={'/dashboard/seller/addProduct'}>Add A Product</NavLink></li>
-                <li><NavLink className={({ isActive }) => isActive ? "btn btn-sm md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"} to={'/dashboard/seller/MyProducts'}>My Products</NavLink></li>
+                <li><NavLink className={({ isActive }) => isActive ? "btn btn-sm btn-primary md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"} to={'/dashboard/seller/addProduct'}>Add A Product</NavLink></li>
+                <li><NavLink className={({ isActive }) => isActive ? "btn btn-sm btn-primary md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"} to={'/dashboard/seller/MyProducts'}>My Products</NavLink></li>
             </>
         }
         {
@@ -51,7 +50,7 @@ const DashboardLayout = () => {
                             <div className='flex flex-col items-center my-4'>
                                 <img className="object-cover w-24 h-24 mx-2 rounded-full"
                                     src={user?.photoURL} alt="avatar" />
-                                <h4 className="mx-2 mt-2 font-medium text-warning hover:underline">{user?.displayName}</h4>
+                                <h4 className="mx-2 mt-2 font-medium text-[#6F61C0] hover:underline">{user?.displayName}</h4>
                                 <p className="mx-2 mt-1 text-sm font-medium text-primary hover:underline">{user?.email}</p>
                             </div>
                             <ul className="menu p-4 w-80 text-base-content gap-2">
