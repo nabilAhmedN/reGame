@@ -1,19 +1,19 @@
 import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { UserContext } from '../../context/UserValidation';
-import useSeller from '../../Hook/useSeller';
+import useAdmin from '../../Hook/useAdmin';
 import load from '../../assets/images/loading.gif'
 
-const SellerRoute = ({ children }) => {
+const AdminOnlyRoute = ({ children }) => {
     const { user, loading } = useContext(UserContext);
-    const [isSeller, isSellerLoading] = useSeller(user?.email)
+    const [isAdmin, isAdminLoading] = useAdmin(user?.email);
     // console.log(isAdmin)
     const location = useLocation()
-    if (loading || isSellerLoading) {
+    if (loading || isAdminLoading) {
         // console.log('from loading state')
         return <img src={load} alt=''/>;
     }
-    if (user && isSeller) {
+    if (user && isAdmin) {
         // console.log('from user and admin true state')
         return children;
     }
@@ -21,4 +21,4 @@ const SellerRoute = ({ children }) => {
 
 };
 
-export default SellerRoute;
+export default AdminOnlyRoute;
