@@ -84,20 +84,28 @@ const AddAProduct = () => {
         <div className=''>
             <div className="w-full pt-8 flex items-center justify-center" >
                 <div className="bg-base-100 py-2 px-10 sm:max-w-md w-full">
-                    <div className="text-2xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-warning to-primary">
+                    <div className="text-2xl md:text-4xl font-bold text-center text-purple-300 ">
                         Add Product Here
                     </div>
                     <form onSubmit={handleSubmit(handleAddProduct)} >
                         <div className='mt-4'>
+                            <label>Name of product*</label>
+                            <input type="text" {...register("name", { required: "Product Name is required." })}
+                                className="focus:outline-none border w-full p-2 border-[#D0BFFF] placeholder-orange-200 mt-2"
+
+                            />
+                            {errors.name && <p className='text-error my-2'>{errors.name.message}</p>}
+                        </div>
+                        <div className='my-2'>
                             <label>Upload a product photo*</label>
                             <input type="file" {...register("image", { required: "Product photo is required." })}
-                                className="focus:outline-none border w-full p-2 border-amber-500 placeholder-orange-200 mt-2" />
+                                className="focus:outline-none border w-full p-2 border-[#D0BFFF] placeholder-orange-200 mt-2" />
                             {errors.image && <p className='text-error my-2'>{errors.image.message}</p>}
                         </div>
                         <div className='my-2'>
                             <label>Product Category*</label>
                             <select {...register("category", { required: "Product Category is required." })}
-                                className="focus:outline-none border w-full p-2 border-amber-500 placeholder-orange-200 mt-2"
+                                className="focus:outline-none border w-full p-2 border-[#D0BFFF] placeholder-orange-200 mt-2"
                                 required
                             >
                                 <option selected value="PS4">PS4</option>
@@ -106,17 +114,9 @@ const AddAProduct = () => {
                             </select>
                         </div>
                         <div className='my-2'>
-                            <label>Name of product*</label>
-                            <input type="text" {...register("name", { required: "Product Name is required." })}
-                                className="focus:outline-none border w-full p-2 border-amber-500 placeholder-orange-200 mt-2"
-
-                            />
-                            {errors.name && <p className='text-error my-2'>{errors.name.message}</p>}
-                        </div>
-                        <div className='my-2'>
                             <label>Product Condition*</label>
                             <select type="text" {...register("condition", { required: "Product Condition is required." })}
-                                className="focus:outline-none border w-full p-2 border-amber-500 placeholder-orange-200 mt-2"
+                                className="focus:outline-none border w-full p-2 border-[#D0BFFF] placeholder-orange-200 mt-2"
                             >
                                 <option selected value="Excellent">Excellent</option>
                                 <option value="Good">Good</option>
@@ -127,7 +127,7 @@ const AddAProduct = () => {
                         <div className='my-2'>
                             <label>Location of product*</label>
                             <input type="text" {...register("location", { required: "Product Location is required." })}
-                                className="focus:outline-none border w-full p-2 border-amber-500 placeholder-orange-200 mt-2"
+                                className="focus:outline-none border w-full p-2 border-[#D0BFFF] placeholder-orange-200 mt-2"
 
                             />
                             {errors.location && <p className='text-error my-2'>{errors.location.message}</p>}
@@ -135,7 +135,7 @@ const AddAProduct = () => {
                         <div className='my-2'>
                             <label>Your Contact Number*</label>
                             <input type="text" {...register("phone", { required: "Your Contact Number is required." })}
-                                className="focus:outline-none border w-full p-2 border-amber-500 placeholder-orange-200 mt-2"
+                                className="focus:outline-none border w-full p-2 border-[#D0BFFF] placeholder-orange-200 mt-2"
 
                             />
                             {errors.phone && <p className='text-error my-2'>{errors.phone.message}</p>}
@@ -144,7 +144,7 @@ const AddAProduct = () => {
                             <div className='my-2'>
                                 <label className='font-extrabold'>Resale Price*</label>
                                 <input type="number" {...register("resalePrice", { required: "Resale price is required." })}
-                                    className="focus:outline-none border w-full p-2 border-amber-500 placeholder-orange-200 mt-2"
+                                    className="focus:outline-none border w-full p-2 border-[#D0BFFF] placeholder-orange-200 mt-2"
 
                                 />
                                 {errors.resalePrice && <p className='text-error my-2'>{errors.resalePrice.message}</p>}
@@ -152,7 +152,7 @@ const AddAProduct = () => {
                             <div className='my-2'>
                                 <label>Original Price*</label>
                                 <input type="number" {...register("originalPrice", { required: "Original price required." })}
-                                    className="focus:outline-none border w-full p-2 border-amber-500 placeholder-orange-200 mt-2"
+                                    className="focus:outline-none border w-full p-2 border-[#D0BFFF] placeholder-orange-200 mt-2"
 
                                 />
                                 {errors.originalPrice && <p className='text-error my-2'>{errors.originalPrice.message}</p>}
@@ -160,31 +160,34 @@ const AddAProduct = () => {
                         </div>
                         <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                             <div className='my-2'>
-                                <label>Year of use*</label>
+                                <label>Month of use*</label>
                                 <input type="number" {...register("usedTime", { required: "Year of use is required." })}
-                                    className="focus:outline-none border w-full p-2 border-amber-500 placeholder-orange-200 mt-2"
+                                    className="focus:outline-none border w-full p-2 border-[#D0BFFF] placeholder-orange-200 mt-2"
 
                                 />
                                 {errors.usedTime && <p className='text-error my-2'>{errors.usedTime.message}</p>}
                             </div>
-                            <div className='my-2'>
-                                <label>Year of purchase</label>
-                                <input type="number" {...register("purchaseYear", { required: "Purchase Year is required" })}
-                                    className="focus:outline-none border w-full p-2 border-amber-500 placeholder-orange-200 mt-2"
+                            <div className="my-2">
+                                <label>Post time</label>
+                                <input
+                                type="text"
+                                {...register("postTime")}
+                                className="focus:outline-none border w-full p-2 border-[#D0BFFF] placeholder-orange-200 mt-2"
+                                defaultValue={currentTime}
+                                disabled
                                 />
-                                {errors.purchaseYear && <p className='text-error my-2'>{errors.purchaseYear.message}</p>}
                             </div>
                         </div>
                         <div className='my-2'>
                             <label>Product details*</label>
                             <input type="textarea" {...register("productDetails")}
-                                className="textarea textarea-warning focus:outline-none border w-full p-2 border-amber-500 placeholder-orange-200 mt-2"
+                                className="textarea textarea-warning focus:outline-none border w-full p-2 border-[#bfacf5] placeholder-[#b9abdf] mt-2"
                                 placeholder='Description of the product'
                             />
                             {errors.productDetails && <p className='text-error my-2'>{errors.productDetails.message}</p>}
                         </div>
                         <div className="flex justify-center my-4">
-                            <input className="btn btn-outline rounded-full w-full sm:w-56 text-lg font-semibold "
+                            <input className="btn btn-outline rounded-full w-full sm:w-56 text-lg font-semibold btn-primary"
                                 type="submit" value="POST YOUR PRODUCT"
                             />
                         </div>
