@@ -102,17 +102,17 @@ const SingleProduct = ({ product, user, setBookingProduct }) => {
 
     return (
         <div>
-            <div className="w-full max-w-sm overflow-hidden bg-amber-50 rounded-lg shadow-lg">
-                <img className="object-cover object-center w-full h-56" src={productImgURL} alt={productName} />
+            <div className="w-full max-w-sm overflow-hidden bg-purple-50 rounded-lg shadow-lg">
+                <img className="object-cover object-center w-full h-72" src={productImgURL} alt={productName} />
 
-                <div className="flex items-center px-6 py-3 bg-base-100">
+                <div className="flex items-center px-6 bg-base-100">
                     <BiJoystick className='text-lg'></BiJoystick>
-                    <p className="mx-3 text-lg font-semibold">{category}</p>
+                    <p className="mx-3 text-base font-semibold">{category}</p>
                 </div>
                 <div className="px-6 py-2">
-                    <h2 className="text-xl font-semibold text-gray-800 ">{productName}</h2>
-                    <p className="py-2 text-accent text-lg font-bold">Resale : ${resalePrice}</p>
-                    <div className='flex justify-center text-accent'>
+                    <h2 className="text-2xl font-semibold text-gray-800 ">{productName}</h2>
+                    <p className="py-2 text-fuchsia-500 text-lg font-bold">Resale : ${resalePrice}</p>
+                    <div className='flex justify-center text-fuchsia-500'>
                         <MdOutlineAvTimer className='text-lg'></MdOutlineAvTimer>
                         <p className="px-2 text-sm">{productUsedFor} month old</p>
                     </div>
@@ -128,7 +128,7 @@ const SingleProduct = ({ product, user, setBookingProduct }) => {
                     <div className="flex items-center mt-4 text-gray-700">
                         <FaUserTag className='text-lg'></FaUserTag>
                         <div className='flex'>
-                            <p className="px-2 text-sm">{sellerName}</p>
+                            <p className="px-2 text-base">{sellerName}</p>
                             {
                                 verifiedSeller ? <MdOutlineVerified></MdOutlineVerified> : <></>
                             }

@@ -34,8 +34,8 @@ const ProductsPage = () => {
 
     return (
         <div className='container mx-auto'>
-            <div className='flex flex-col text-center justify-center mx-2 md:mx-0 my-6'>
-                <h2 className='text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-warning to-primary py-6 my-6 md:my-16'>
+            <div className='flex flex-col text-center justify-center mx-2 md:mx-0 mb-5'>
+                <h2 className='text-[26px] md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-purple-400 py-10 '>
                     {
                         productsArray.length > 0 ? "Select your desire product" : "No Product for this Category listed"
                     }
