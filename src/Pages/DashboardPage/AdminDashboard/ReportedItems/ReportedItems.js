@@ -95,7 +95,7 @@ const ReportedItems = () => {
                                         </td>
                                         <td><button className='btn btn-sm text-center btn-ghost text-amber-500'>{product?.reportedProduct}</button></td>
                                         <td>
-                                            <label onClick={() => setDeletingReportedItem(product)} htmlFor="confirmation-modal" className="btn">< MdCancel></MdCancel></label>
+                                            <label onClick={() => setDeletingReportedItem(product)} htmlFor="confirmation-modal" className="btn btn-error">< MdCancel></MdCancel></label>
                                         </td>
                                     </tr>
                                 )

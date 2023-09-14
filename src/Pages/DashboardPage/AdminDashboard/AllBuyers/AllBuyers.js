@@ -111,7 +111,7 @@ const AllBuyers = () => {
                                         }
                                         </td>
                                         <td>
-                                            <label onClick={() => setDeletingBuyer(user)} htmlFor="confirmation-modal" className="btn">< MdCancel></MdCancel></label>
+                                            <label onClick={() => setDeletingBuyer(user)} htmlFor="confirmation-modal" className="btn btn-error">< MdCancel></MdCancel></label>
                                         </td>
                                     </tr>
                                 )

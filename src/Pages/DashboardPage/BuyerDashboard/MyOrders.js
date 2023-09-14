@@ -122,7 +122,7 @@ const MyOrders = () => {
                                             }
                                         </td>
                                         <td>
-                                            <label onClick={() => setDeletingBookedProduct(booking)} htmlFor="confirmation-modal" className="btn">< MdCancel></MdCancel></label>
+                                            <label onClick={() => setDeletingBookedProduct(booking)} htmlFor="confirmation-modal" className="btn btn-error">< MdCancel></MdCancel></label>
                                         </td>
                                     </tr>
                                 )
