@@ -93,7 +93,7 @@ const BookModal = ({ closeModal, modalData, user, refetch, setBookingProduct }) 
                                     <span className="label-text">Product price</span>
                                 </label>
                                 <input type="text" placeholder="Type here" className="input input-bordered w-full"
-                                    disabled defaultValue={resalePrice} />
+                                    disabled defaultValue={resalePrice}$/>
                             </div>
                             <div className="form-control w-full">
                                 <label className="label">

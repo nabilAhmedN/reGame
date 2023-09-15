@@ -10,14 +10,14 @@ const Navbar = () => {
     const { user, logOut } = useContext(UserContext);
 
     const navMenu = <>
-        <NavLink className={({ isActive }) => isActive ? "btn btn-sm md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"}
+        <NavLink className={({ isActive }) => isActive ? "btn btn-sm btn-primary md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"}
             to={'/'}>Home</NavLink>
         {
-            user && <NavLink className={({ isActive }) => isActive ? "btn btn-sm md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"}
+            user && <NavLink className={({ isActive }) => isActive ? "btn btn-sm btn-primary md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"}
                 to={'/dashboard'}>Dashboard</NavLink>
         }
-        <NavLink className={({ isActive }) => isActive ? "btn btn-sm md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"}
-            to={'/blog'}>Blog</NavLink>
+        {/* <NavLink className={({ isActive }) => isActive ? "btn btn-sm md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"}
+            to={'/blog'}>Blog</NavLink> */}
         {
             !user && <NavLink className={({ isActive }) => isActive ? "btn btn-sm md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"}
                 to={'/login'}>Login</NavLink>
@@ -69,7 +69,7 @@ const Navbar = () => {
                                 {
                                     user ?
                                         <>
-                                            <img src={user.photoURL} className='rounded-full border border-amber-500' alt={user.displayName} />
+                                            <img src={user.photoURL} className='rounded-full border border-[#D0BFFF]' alt={user.displayName} />
                                         </>
                                         :
                                         <>
