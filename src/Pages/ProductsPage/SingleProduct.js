@@ -10,7 +10,7 @@ import { MdOutlineAvTimer, MdOutlineVerified } from "react-icons/md";
 import { TfiLocationPin } from "react-icons/tfi";
 import { Link } from 'react-router-dom';
 import useBuyer from '../../Hook/useBuyer';
-import load from '../../assets/images/loading.gif'
+import load from '../../assets/images/loading.gif';
 
 const SingleProduct = ({ product, user, setBookingProduct }) => {
     const { _id, productImgURL, category, productName, productLocation, resalePrice, originalPrice, productUsedFor, productPostTime, sellerName, sellerEmail, paid } = product;

@@ -3,8 +3,8 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { MdCancel, MdVerifiedUser } from "react-icons/md";
 import useTitle from '../../../../Hook/useTitle';
+import load from '../../../../assets/images/loading.gif';
 import ConfirmationModal from '../../../../components/ConfirmarionModal/ConfirmationModal';
-import load from '../../../../assets/images/loading.gif'
 import { UserContext } from '../../../../context/UserValidation';
 
 
@@ -110,7 +110,7 @@ const AllSellers = () => {
                                                 user?.verifySeller !== "yes" ? <button onClick={() => handleVerifySeller(user._id)}
                                                     className='btn btn-sm text-center btn-primary'>Verify Seller</button>
                                                     :
-                                                    <button className='btn btn-sm text-center btn-ghost text-amber-500'><MdVerifiedUser></MdVerifiedUser></button>
+                                                    <button className='btn btn-sm btn-ghost text-xl text-emerald-600'><MdVerifiedUser></MdVerifiedUser></button>
                                             }
                                         </td>
                                         <td>

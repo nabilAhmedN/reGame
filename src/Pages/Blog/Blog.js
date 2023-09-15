@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import useTitle from '../../Hook/useTitle';
-import load from '../../assets/images/loading.gif'
+import load from '../../assets/images/loading.gif';
 import BlogCard from './BlogCard';
 
 const Blog = () => {

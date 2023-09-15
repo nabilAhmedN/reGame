@@ -78,7 +78,6 @@ const AddAProduct = () => {
             })
             .catch(err => console.log(err))
 
-
     }
     return (
         <div className=''>

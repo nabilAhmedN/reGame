@@ -27,9 +27,9 @@ const DashboardLayout = () => {
         }
         {
             isAdmin && <>
-                <li><NavLink className={({ isActive }) => isActive ? "btn btn-sm md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"} to={'/dashboard/admin/buyers'}>Buyers List</NavLink></li>
-                <li><NavLink className={({ isActive }) => isActive ? "btn btn-sm md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"} to={'/dashboard/admin/sellers'}>Sellers List</NavLink></li>
-                <li><NavLink className={({ isActive }) => isActive ? "btn btn-sm md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"} to={'/dashboard/admin/reportedItems'}>Reported Items</NavLink></li>
+                <li><NavLink className={({ isActive }) => isActive ? "btn btn-primary btn-sm md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"} to={'/dashboard/admin/buyers'}>Buyers List</NavLink></li>
+                <li><NavLink className={({ isActive }) => isActive ? "btn btn-primary btn-sm md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"} to={'/dashboard/admin/sellers'}>Sellers List</NavLink></li>
+                <li><NavLink className={({ isActive }) => isActive ? "btn btn-primary btn-sm md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"} to={'/dashboard/admin/reportedItems'}>Reported Items</NavLink></li>
             </>
         }
     </>

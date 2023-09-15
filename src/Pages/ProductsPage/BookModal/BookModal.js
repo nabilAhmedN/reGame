@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+// import { RxCrossCircled } from "react-icons/ri";
+import {AiOutlineCloseCircle} from "react-icons/ai"
 
 const BookModal = ({ closeModal, modalData, user, refetch, setBookingProduct }) => {
     const { _id, productImgURL, category, productName, productLocation, resalePrice, sellerName, sellerEmail } = modalData;
@@ -60,10 +62,10 @@ const BookModal = ({ closeModal, modalData, user, refetch, setBookingProduct }) 
         <>
             <input type="checkbox" id="product-book-modal" className="modal-toggle" />
             <div className="modal modal-bottom md:modal-middle">
-                <div className="modal-box relative">
+                <div className="modal-box relative pt-10">
                     <label htmlFor="product-book-modal" onClick={closeModal}
-                        className="btn btn-sm btn-circle absolute right-2 top-2 btn-outline  border-0 btn-primary">✕</label>
-                    <h3 className="font-bold text-lg text-center">Please share details for booking <br /> {productName}</h3>
+                        className="btn btn-sm btn-circle absolute right-2 top-2 btn-outline  border-0 btn-primary"><span className='text-xl'><AiOutlineCloseCircle/></span></label>
+                    <h3 className="font-bold text-lg text-center">Please share details for booking <br /> <span className='text-fuchsia-500'> {productName}</span></h3>
                     <p className="py-4 text-center">Your booking information</p>
                     <form onSubmit={handleSubmit(productBookingData)}>
                         <div className="form-control w-full">
@@ -93,7 +95,7 @@ const BookModal = ({ closeModal, modalData, user, refetch, setBookingProduct }) 
                                     <span className="label-text">Product price</span>
                                 </label>
                                 <input type="text" placeholder="Type here" className="input input-bordered w-full"
-                                    disabled defaultValue={resalePrice}$/>
+                                    disabled defaultValue={resalePrice + "$"}/>
                             </div>
                             <div className="form-control w-full">
                                 <label className="label">

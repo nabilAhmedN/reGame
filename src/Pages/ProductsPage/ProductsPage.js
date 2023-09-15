@@ -2,10 +2,10 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import useTitle from '../../Hook/useTitle';
+import load from '../../assets/images/loading.gif';
 import { UserContext } from '../../context/UserValidation';
 import BookModal from './BookModal/BookModal';
 import SingleProduct from './SingleProduct';
-import load from '../../assets/images/loading.gif'
 
 const ProductsPage = () => {
     useTitle("Products Page")
@@ -35,7 +35,7 @@ const ProductsPage = () => {
     return (
         <div className='container mx-auto'>
             <div className='flex flex-col text-center justify-center mx-2 md:mx-0 mb-5'>
-                <h2 className='text-[26px] md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-purple-500 py-10 '>
+                <h2 className='text-[26px] md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-100 to-purple-500 py-10 '>
                     {
                         productsArray.length > 0 ? "Select your desire product" : "No Product for this Category listed"
                     }

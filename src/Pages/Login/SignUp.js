@@ -144,7 +144,7 @@ const SignUp = () => {
                         </div>
                         {errors.accepted && <p className='text-error my-2'>{errors.accepted.message}</p>}
                         <div className="flex justify-center my-6">
-                            <input className="btn btn-outline rounded-full w-full sm:w-56 text-lg font-semibold "
+                            <input className="btn btn-primary btn-outline rounded-full w-full sm:w-56 text-lg font-semibold "
                                 type="submit" value="CREATE ACCOUNT"
                             />
                         </div>

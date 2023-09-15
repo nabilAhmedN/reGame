@@ -19,7 +19,7 @@ const Navbar = () => {
         {/* <NavLink className={({ isActive }) => isActive ? "btn btn-sm md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"}
             to={'/blog'}>Blog</NavLink> */}
         {
-            !user && <NavLink className={({ isActive }) => isActive ? "btn btn-sm md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"}
+            !user && <NavLink className={({ isActive }) => isActive ? "btn btn-sm btn-primary md:btn-md btn-outline" : "btn btn-ghost btn-sm md:btn-md"}
                 to={'/login'}>Login</NavLink>
         }
     </>
@@ -36,7 +36,6 @@ const Navbar = () => {
                 toast.error(`${error.message}`)
             });
     }
-
 
     return (
         <div className='bg-base-100'>
@@ -64,8 +63,8 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     <div className="dropdown dropdown-end">
-                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar p-1">
-                            <div className="w-20 rounded-full text-center">
+                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar p-1 tooltip tooltip-bottom" data-tip={user ? user?.displayName : 'Login'}>
+                            <div className="rounded-full text-center">
                                 {
                                     user ?
                                         <>

@@ -3,8 +3,8 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { MdCancel } from "react-icons/md";
 import useTitle from '../../../../Hook/useTitle';
+import load from '../../../../assets/images/loading.gif';
 import ConfirmationModal from '../../../../components/ConfirmarionModal/ConfirmationModal';
-import load from '../../../../assets/images/loading.gif'
 import { UserContext } from '../../../../context/UserValidation';
 
 const ReportedItems = () => {
