@@ -2,7 +2,7 @@
 
 
 ## Live Link
-Hosted in Firebase -> [ReGame](https://re-game-71d77.web.app/)
+Hosted in Firebase -> [ReGame](https://regames-12bd9.web.app/)
 
 ## Project Description
 - ReGame is a resale market website where you can buy, sell games  <br/>
@@ -15,4 +15,4 @@ Freamwork and library:- Here I use Tailwind Css, daisyUI, Firebase, react icon, 
 
 ## admin
 adminEmail: admin@g.com <br/>
-adminPassword: admin1
+adminPassword: Admin1!
